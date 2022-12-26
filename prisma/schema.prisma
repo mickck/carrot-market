@@ -1,0 +1,28 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+  relationMode = "prisma"
+
+}
+
+model User{
+  id Int @id @default(autoincrement())
+  //@id is id of the model autoincrement
+  phone Int? @unique
+  email String? @unique
+  name String?
+  avatar String?
+  // url also is string
+  createdAt DateTime @default(now())
+  // put a time when you make
+  updatedAt DateTime @updatedAt
+  //@updatedAt lets prisma know when users update this field
+ 
+}

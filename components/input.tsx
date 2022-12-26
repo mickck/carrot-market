@@ -1,11 +1,15 @@
+import type { UseFormRegisterReturn } from "react-hook-form";
+
 interface InputProps {
   label: string;
   name: string;
   kind?: "text" | "phone" | "price";
-  [key: string]: any;
+  register: UseFormRegisterReturn;
+  type: string;
+  required: boolean;
 }
 
-export default function Input({ label, name, kind = "text", ...rest }: InputProps) {
+export default function Input({ label, name, kind = "text", type, register, required }: InputProps) {
   return (
     <div>
       <label className='mb-1 block text-sm font-medium text-gray-700' htmlFor={name}>
@@ -15,8 +19,10 @@ export default function Input({ label, name, kind = "text", ...rest }: InputProp
         <div className='relative flex items-center  rounded-md shadow-sm'>
           <input
             id={name}
-            {...rest}
-            className='w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-orange-500 focus:outline-none focus:ring-orange-500'
+            {...register}
+            type={type}
+            required={required}
+            className='w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-emerald-500 focus:outline-none focus:ring-emerald-500'
           />
         </div>
       ) : null}
@@ -27,21 +33,25 @@ export default function Input({ label, name, kind = "text", ...rest }: InputProp
           </div>
           <input
             id={name}
-            {...rest}
-            className='w-full appearance-none rounded-md border border-gray-300 px-3 py-2 pl-7 placeholder-gray-400 shadow-sm focus:border-orange-500 focus:outline-none focus:ring-orange-500'
+            {...register}
+            type={type}
+            required={required}
+            className='w-full appearance-none rounded-md border border-gray-300 px-3 py-2 pl-7 placeholder-gray-400 shadow-sm focus:border-emerald-500 focus:outline-none focus:ring-emerald-500'
           />
           <div className='pointer-events-none absolute right-0 flex items-center pr-3'>
-            <span className='text-gray-500'>KRW</span>
+            <span className='text-gray-500'>AUD</span>
           </div>
         </div>
       ) : null}
       {kind === "phone" ? (
         <div className='flex rounded-md shadow-sm'>
-          <span className='flex select-none items-center justify-center rounded-l-md border border-r-0 border-gray-300 bg-gray-50 px-3 text-sm text-gray-500'>+82</span>
+          <span className='flex select-none items-center justify-center rounded-l-md border border-r-0 border-gray-300 bg-gray-50 px-3 text-sm text-gray-500'>+61</span>
           <input
             id={name}
-            {...rest}
-            className='w-full appearance-none rounded-md rounded-l-none border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-orange-500 focus:outline-none focus:ring-orange-500'
+            {...register}
+            type={type}
+            required={required}
+            className='w-full appearance-none rounded-md rounded-l-none border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-emerald-500 focus:outline-none focus:ring-emerald-500'
           />
         </div>
       ) : null}
