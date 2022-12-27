@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
 import Link from "next/link";
-import Layout from "../../components/layout";
+import Layout from "@components/layout";
 
-const Chats: NextPage = () => {
+const Chats: NextPage = (props) => {
   return (
     <Layout hasTabBar title='Chat'>
       <div className='divide-y-[1px] '>

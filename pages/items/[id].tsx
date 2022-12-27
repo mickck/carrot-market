@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
-import Button from "../../components/button";
-import Layout from "../../components/layout";
+import Button from "@components/button";
+import Layout from "@components/layout";
 
-const ItemDetail: NextPage = () => {
+const ItemDetail: NextPage = (props) => {
   return (
     <Layout canGoBack>
       <div className='px-4  py-4'>

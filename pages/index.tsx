@@ -1,9 +1,9 @@
 import type { NextPage } from "next";
-import FloatingButton from "../components/floating-button";
-import Item from "../components/item";
-import Layout from "../components/layout";
+import FloatingButton from "@components/floating-button";
+import Item from "@components/item";
+import Layout from "@components/layout";
 
-const Home: NextPage = () => {
+const Home: NextPage = (props) => {
   return (
     <Layout title='Home' hasTabBar>
       <div className='flex flex-col space-y-5 divide-y'>

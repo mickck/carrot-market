@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
-import Item from "../../components/item";
-import Layout from "../../components/layout";
+import Item from "@components/item";
+import Layout from "@components/layout";
 
-const Sold: NextPage = () => {
+const Sold: NextPage = (props) => {
   return (
     <Layout title='Sales history' canGoBack>
       <div className='flex flex-col space-y-5 divide-y  pb-10'>

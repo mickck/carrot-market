@@ -1,16 +1,16 @@
 import type { NextPage } from "next";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import Button from "../components/button";
-import Input from "../components/input";
-import useMutation from "../libs/client/useMutation";
-import { cls } from "../libs/client/utils";
+import Button from "@components/button";
+import Input from "@components/input";
+import useMutation from "@libs/client/useMutation";
+import { cls } from "@libs/client/utils";
 
 interface EnterForm {
   email?: string;
   phone?: string;
 }
-const Enter: NextPage = () => {
+const Enter: NextPage = (props) => {
   const [enter, { loading, data, error }] = useMutation("/api/users/enter");
   //you can mutate status of the database
   //post with fetch when enter is called

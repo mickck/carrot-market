@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
-import Layout from "../../components/layout";
-import Message from "../../components/message";
+import Layout from "@components/layout";
+import Message from "@components/message";
 
-const ChatDetail: NextPage = () => {
+const ChatDetail: NextPage = (props) => {
   return (
     <Layout canGoBack title='Steve'>
       <div className='space-y-4 py-10 px-4 pb-16'>

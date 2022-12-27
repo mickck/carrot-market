@@ -1,10 +1,10 @@
 import type { NextPage } from "next";
-import Button from "../../components/button";
-import Input from "../../components/input";
-import Layout from "../../components/layout";
-import TextArea from "../../components/textarea";
+import Button from "@components/button";
+import Input from "@components/input";
+import Layout from "@components/layout";
+import TextArea from "@components/textarea";
 
-const Upload: NextPage = () => {
+const Upload: NextPage = (props) => {
   return (
     <Layout canGoBack title='Upload Product'>
       <form className='space-y-4 p-4'>

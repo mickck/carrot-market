@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
-import Item from "../../components/item";
-import Layout from "../../components/layout";
+import Item from "@components/item";
+import Layout from "@components/layout";
 
-const Loved: NextPage = () => {
+const Loved: NextPage = (props) => {
   return (
     <Layout title='Wishlist' canGoBack>
       <div className='flex flex-col space-y-5 divide-y  pb-10'>
