@@ -5,23 +5,30 @@ import client from "@libs/server/client";
 // handle the views
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { phone, email } = req.body;
-  const payload = phone ? { phone: +phone } : { email };
-  const user = await client.user.upsert({
-    where: {
-      ...payload,
+  const user = phone ? { phone: +phone } : { email };
+  const payload = Math.floor(10000 + Math.random() * 90000) + "";
+  const token = await client.token.create({
+    data: {
+      payload,
+
+      user: {
+        connectOrCreate: {
+          where: {
+            ...user,
+          },
+          create: {
+            name: "Anonymous",
+            ...user,
+          },
+        },
+      },
     },
-    create: {
-      name: "Anonymous",
-      ...payload,
-    },
-    update: {},
   });
-  console.log(user);
+  console.log(token);
   // if (email) {
   //   user = await client.user.findUnique({
   //     //findUnique helps find user when you use where
-  //     where: {
-  //       email,
+  //     where: {     email,
   //     },
   //   });
   //   if (user) console.log("found it.");
@@ -29,8 +36,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   //     console.log("Did not find. it will create.");
   //     user = await client.user.create({
   //       data: {
-  //         name: "Anonymous",
-  //         email,
+  //         name: "Anonymous",    email,
   //       },
   //     });
   //   }
