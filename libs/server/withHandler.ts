@@ -7,13 +7,13 @@ export interface ResponseType {
 export default function withHandler(method: "GET" | "POST" | "DELETE", fn: (req: NextApiRequest, res: NextApiResponse) => void) {
   //method, function
   return async function (req: NextApiRequest, res: NextApiResponse): Promise<any> {
-    if (req.method !== "POST") {
+    if (req.method !== method) {
       return res.status(405).end();
     }
     try {
       await fn(req, res);
     } catch (error) {
-      // console.log(error);
+      console.log(error);
       return res.status(500).json({ error });
     }
   };

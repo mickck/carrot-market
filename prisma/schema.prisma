@@ -14,7 +14,7 @@ datasource db {
 model User {
   id        Int      @id @default(autoincrement())
   //@id is id of the model autoincrement
-  phone     BigInt?     @unique
+  phone     String?  @unique
   email     String?  @unique
   name      String
   avatar    String?
@@ -30,7 +30,7 @@ model Token {
   id        Int      @id @default(autoincrement())
   payload   String   @unique
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  //Casecade- Delete the child records when the parent record is deleted.
+  //Cascade- Delete the child records when the parent record is deleted.
   //setNull - value of user changes null, leave the token
   userId    Int
   createdAt DateTime @default(now())
