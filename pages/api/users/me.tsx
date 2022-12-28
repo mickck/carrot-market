@@ -6,10 +6,6 @@ import { withApiSesssion } from "@libs/server/withSession";
 async function handler(req: NextApiRequest, res: NextApiResponse<ResponseType>) {
   // console.log(req.session.user);
 
-  if (!req.session.user) {
-    res.json({ ok: false });
-  }
-
   const profile = await client.user.findUnique({
     where: {
       id: req.session.user?.id,
@@ -21,4 +17,9 @@ async function handler(req: NextApiRequest, res: NextApiResponse<ResponseType>) 
   });
 }
 
-export default withApiSesssion(withHandler("GET", handler));
+export default withApiSesssion(
+  withHandler({
+    method: "GET",
+    handler: handler,
+  })
+);
