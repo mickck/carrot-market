@@ -24,6 +24,7 @@ model User {
   updatedAt DateTime @updatedAt
   //@updatedAt lets prisma know when users update this field
   tokens    Token[]
+  products Product[]
 }
 
 model Token {
@@ -39,4 +40,21 @@ model Token {
   @@index([userId])
 }
 
-// token.user.name It can contact 
+
+model Product{
+  id        Int      @id @default(autoincrement())
+  created   DateTime @default(now())
+  updated   DateTime @updatedAt
+  user      User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    Int
+  image   String
+  name    String
+  price   Int
+  description String @db.MediumText
+
+  @@index([userId])
+
+}
+
+
+

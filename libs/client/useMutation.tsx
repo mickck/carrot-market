@@ -7,6 +7,7 @@ interface UseMutationState<T> {
 }
 
 type UseMutationResult<T> = [(data: any) => void, UseMutationState<T>];
+
 export default function useMutation<T = any>(url: string): UseMutationResult<T> {
   //  const [enter, { loading, data, error }] = useMutation("/api/users/enter");
   const [loading, setLoading] = useState(false);
